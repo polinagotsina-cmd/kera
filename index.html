@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KERA — Coworking in Old Town, Tbilisi</title>
+  <meta name="description" content="KERA is a coworking space in Old Town, Tbilisi. Everything you need to work all day.">
+
+  <link rel="preload" href="assets/fonts/Switzer-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Switzer-Italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main">
+      <a class="nav__logo" href="#home">KERA</a>
+
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#included">What’s included</a></li>
+        <li><a href="#prices">Prices</a></li>
+        <li><a href="#contacts">Contacts</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+      <div class="hero__content">
+        <h1 class="hero__title">
+          <em>Everything</em> you<br class="br-mobile">
+          <img class="hero__cup cup-desktop" src="assets/images/cup.png" alt="" width="169" height="146">
+          need<br class="br-desktop">
+          <img class="hero__cup cup-mobile" src="assets/images/cup.png" alt="" width="169" height="146">
+          to work<br class="br-mobile"> <em>all day.</em>
+        </h1>
+
+        <p class="hero__text">
+          No dying laptop, no lost connection, no noisy neighbours.<br class="br-desktop">
+          <strong>Just work.</strong>
+        </p>
+
+        <div class="hero__buttons">
+          <a class="btn btn--outline" href="#included">What’s included</a>
+          <a class="btn btn--filled" href="#prices">Prices</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WHAT'S INCLUDED (about) ========== -->
+    <section class="about" id="included" aria-labelledby="about-title">
+
+      <!-- Decorative "computer menu bar"; date and time filled in by js/main.js -->
+      <div class="menubar" aria-hidden="true">
+        <img class="menubar__icons" src="assets/images/menubar-icons.png" alt="" width="53" height="19">
+        <span class="menubar__date" data-clock="date">Sat Jan 25</span>
+        <span class="menubar__time" data-clock="time">14:14</span>
+      </div>
+
+      <div class="about__inner">
+        <img class="about__glasses glasses-mobile" src="assets/images/glasses.png" alt="" width="196" height="54">
+
+        <h2 class="about__title" id="about-title">
+          We built the place we wanted to work&nbsp;in.<br>
+          <em>Here’s what’s inside.</em>
+          <img class="about__glasses glasses-desktop" src="assets/images/glasses.png" alt="" width="196" height="54">
+        </h2>
+
+        <div class="about__grid">
+
+          <!-- Desktop copy: left column -->
+          <div class="about__col about__col--left only-desktop">
+            <div class="about__point about__point--indent">
+              <p class="about__num">1/</p>
+              <p>If you work remotely, you’ve probably tried working from a&nbsp;café.</p>
+            </div>
+            <div class="about__point">
+              <p class="about__num">2/</p>
+              <p>The battery dies, the Wi-Fi drops during a call, and after the third latte you start feeling awkward about taking the&nbsp;table.</p>
+            </div>
+          </div>
+
+          <!-- Phone copy: above the folder -->
+          <p class="about__intro only-mobile">
+            Working from a café sounds nice, until your battery dies and the Wi-Fi drops mid-call.
+          </p>
+
+          <!-- Folder: will open a window later (see js/main.js) -->
+          <div class="about__folder-wrap">
+            <button class="folder" type="button" data-folder aria-label="Open the Kera coworking folder">
+              <span class="folder__icon">
+                <img src="assets/images/folder.png" alt="" width="272" height="208">
+                <span class="folder__hint">(tap here)</span>
+              </span>
+              <span class="folder__label">Kera<br>coworking</span>
+            </button>
+            <img class="about__cursor" src="assets/images/cursor.png" alt="" width="80" height="130">
+          </div>
+
+          <!-- Desktop copy: right column -->
+          <div class="about__col about__col--right only-desktop">
+            <div class="about__point">
+              <p class="about__num">3/</p>
+              <p>We wanted a place where you don’t have to think about any of&nbsp;that.</p>
+              <p class="about__strong">Everything you need<br>to know is in this folder.</p>
+            </div>
+          </div>
+
+          <!-- Phone copy: below the folder -->
+          <div class="about__outro only-mobile">
+            <p>At KERA, you don’t have<br>to think about that.</p>
+            <p class="about__strong">Everything you need to know<br>is in this folder.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PRICES (the receipt) ========== -->
+    <section class="prices" id="prices" aria-labelledby="prices-title">
+
+      <!-- Star used in the list -->
+      <svg class="sr-only" aria-hidden="true" focusable="false">
+        <symbol id="star" viewBox="0 0 24 24">
+          <path d="M12 0C12.8 6.7 17.3 11.2 24 12C17.3 12.8 12.8 17.3 12 24C11.2 17.3 6.7 12.8 0 12C6.7 11.2 11.2 6.7 12 0Z"/>
+        </symbol>
+      </svg>
+
+      <div class="prices__inner">
+        <p class="receipt__meta">KERA coworking · Tbilisi · Receipt #001.</p>
+
+        <div class="receipt">
+          <div class="receipt__intro">
+            <h2 class="receipt__title" id="prices-title">Prices</h2>
+            <img class="receipt__computer" src="assets/images/computer.jpg" alt="" width="438" height="368" loading="lazy">
+          </div>
+
+          <h3 class="receipt__head">EVERY PASS INCLUDES:</h3>
+
+          <div class="receipt__list-cell">
+            <ul class="receipt__list">
+              <li><svg class="receipt__star" aria-hidden="true"><use href="#star"/></svg>Open daily, 8&nbsp;am – 10&nbsp;pm</li>
+              <li><svg class="receipt__star" aria-hidden="true"><use href="#star"/></svg>Fast fiber Wi-Fi with a backup line</li>
+              <li><svg class="receipt__star" aria-hidden="true"><use href="#star"/></svg>Your own desk with a socket</li>
+              <li><svg class="receipt__star" aria-hidden="true"><use href="#star"/></svg>Quiet zones and call booths</li>
+              <li><svg class="receipt__star" aria-hidden="true"><use href="#star"/></svg>Free coffee, tea and water</li>
+              <li><svg class="receipt__star" aria-hidden="true"><use href="#star"/></svg>A kitchen with a fridge, microwave</li>
+              <li><svg class="receipt__star" aria-hidden="true"><use href="#star"/></svg>A lounge for breaks</li>
+            </ul>
+            <p class="receipt__note receipt__note--mobile">*First day is Free. Come and try it.</p>
+          </div>
+
+          <p class="receipt__total-label">TOTAL:</p>
+
+          <div class="receipt__total">
+            <ul class="receipt__prices">
+              <li><strong>30 GEL</strong> <span>/Day</span></li>
+              <li><strong>350 GEL</strong> <span>/Month</span></li>
+              <li><strong>3&nbsp;500 GEL</strong> <span>/Year</span></li>
+            </ul>
+            <p class="receipt__note receipt__note--desktop">*First day is Free. Come and try it.</p>
+          </div>
+        </div>
+
+        <div class="prices__buttons">
+          <button class="btn btn--outline" type="button" data-open-window="questions">I still have a few questions</button>
+          <button class="btn btn--filled" type="button" data-open-window="address">Where to go</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER / CONTACTS ========== -->
+  <footer class="footer" id="contacts">
+    <div class="footer__inner">
+      <h2 class="footer__title">See you tomorrow at 8&nbsp;AM.</h2>
+
+      <div class="footer__cols">
+        <address class="footer__col">
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=12%20Kote%20Afkhazi%20St%2C%20Tbilisi" target="_blank" rel="noopener">12 Kote Afkhazi St, Old Town, Tbilisi</a><br>
+          Every day, 8&nbsp;am – 10&nbsp;pm
+        </address>
+        <p class="footer__col">
+          <a href="tel:+995555000000">+995 555 00 00 00</a><br>
+          <a href="mailto:hello@kera.ge">hello@kera.ge</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer__plants">
+      <a class="footer__credit" href="https://polinagotsina-cmd.github.io/madebypolina/" target="_blank" rel="noopener">Design &amp; code by Polina Gotsina&nbsp;<span aria-hidden="true">↗</span></a>
+    </div>
+  </footer>
+
+  <!-- ========== FOLDER WINDOW ==========
+       Opened by the folder ([data-folder]) or any element with
+       data-open-window="address | questions | images | story". -->
+  <div class="win-layer" data-win-layer hidden>
+    <div class="win" role="dialog" aria-modal="true" aria-labelledby="win-title" tabindex="-1" data-win>
+
+      <!-- Top bar: drag handle (desktop), Mac dots, current tab name -->
+      <div class="win__bar" data-win-drag>
+        <div class="win__dots">
+          <button class="win__dot win__dot--close" type="button" data-win-close aria-label="Close window">
+            <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 2.5l5 5M7.5 2.5l-5 5"/></svg>
+          </button>
+          <button class="win__dot win__dot--min" type="button" data-win-min aria-label="Minimize window">
+            <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 5h6"/></svg>
+          </button>
+          <button class="win__dot win__dot--max" type="button" data-win-max aria-label="Full screen" aria-pressed="false">
+            <svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 2v6M2 5h6"/></svg>
+          </button>
+        </div>
+        <p class="win__current" data-win-current>Address</p>
+      </div>
+
+      <nav class="win__side" aria-label="Folder">
+        <p class="win__brand" id="win-title">Kera</p>
+        <div class="win__tabs" role="tablist" aria-label="Kera coworking">
+          <button class="win__tab" type="button" role="tab" id="tab-address" aria-controls="panel-address" aria-selected="true" data-tab="address">Address</button>
+          <button class="win__tab" type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="false" tabindex="-1" data-tab="questions">Questions</button>
+          <button class="win__tab" type="button" role="tab" id="tab-images" aria-controls="panel-images" aria-selected="false" tabindex="-1" data-tab="images">Images</button>
+          <button class="win__tab" type="button" role="tab" id="tab-story" aria-controls="panel-story" aria-selected="false" tabindex="-1" data-tab="story">Our story</button>
+        </div>
+      </nav>
+
+      <div class="win__scroll" data-win-scroll>
+
+        <!-- Address -->
+        <section class="panel panel--address" id="panel-address" role="tabpanel" aria-labelledby="tab-address" data-panel="address">
+          <figure class="file file--map">
+            <figcaption class="file__bar">
+              <span class="file__name">map.jpg</span>
+              <a class="file__icon" href="assets/images/map.jpg" download="kera-map.jpg" aria-label="Download the map">
+                <img src="assets/images/icon-share.png" alt="" width="22" height="31">
+              </a>
+              <a class="file__btn" href="https://www.google.com/maps/search/?api=1&amp;query=12%20Kote%20Afkhazi%20St%2C%20Tbilisi" target="_blank" rel="noopener">Open in browser</a>
+            </figcaption>
+            <div class="map">
+              <div class="map__canvas">
+                <img class="map__img" src="assets/images/map.jpg" alt="Map of Old Town, Tbilisi: KERA is a short walk from Liberty Square metro station" width="1144" height="600" loading="lazy">
+                <span class="map__marker map__marker--kera">
+                  <img class="map__pin" src="assets/images/pin.png" alt="" width="28" height="52">
+                  <span class="map__label">WE ARE HERE</span>
+                </span>
+                <span class="map__marker map__marker--metro">
+                  <img class="map__pin" src="assets/images/pin.png" alt="" width="28" height="52">
+                  <span class="map__label">Metro station</span>
+                </span>
+              </div>
+            </div>
+          </figure>
+
+          <div class="address">
+            <p class="address__big">12 Kote Afkhazi St, Old Town, Tbilisi</p>
+            <p class="address__small">3 minutes on foot from Liberty Square metro station.</p>
+            <p class="address__big">Open every day, 8&nbsp;am – 10&nbsp;pm</p>
+            <p class="address__small">No booking needed. Just walk in, your first day is free.</p>
+          </div>
+
+          <div class="address__links">
+            <a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=12%20Kote%20Afkhazi%20St%2C%20Tbilisi" target="_blank" rel="noopener">
+              <img src="assets/images/icon-google-maps.png" alt="" width="26" height="36">Google Maps
+            </a>
+            <a class="map-btn" href="https://yandex.com/maps/?text=12%20Kote%20Afkhazi%20St%2C%20Tbilisi" target="_blank" rel="noopener">
+              <img src="assets/images/icon-yandex-maps.png" alt="" width="30" height="36">Yandex Maps
+            </a>
+          </div>
+        </section>
+
+        <!-- Questions: several can be open at once -->
+        <section class="panel panel--questions" id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-panel="questions" hidden>
+          <details class="faq" open data-faq-first>
+            <summary>#1&nbsp; What if I need to take a call?</summary>
+            <p>Use a call booth or a quiet zone. No one will hear you, and you won’t hear them.</p>
+          </details>
+          <details class="faq">
+            <summary>#2 Will my Wi-Fi drop mid-call?</summary>
+            <p>No. We have fast fiber Wi-Fi with a backup line, so if one goes down, the other one takes over.</p>
+          </details>
+          <details class="faq">
+            <summary>#3 Where do I charge my laptop?</summary>
+            <p>At your desk. Every desk has its own socket, no hunting for an outlet.</p>
+          </details>
+          <details class="faq">
+            <summary>#4 Can I take a break?</summary>
+            <p>Of course. There’s a lounge, a kitchen with a fridge and a microwave, and free coffee, tea and water.</p>
+          </details>
+          <details class="faq">
+            <summary>#5 Is it comfortable to sit all day?</summary>
+            <p>That’s the whole idea: proper desks and chairs made for a full working day, not café stools.</p>
+          </details>
+          <details class="faq">
+            <summary>#6 Can I come early or stay late?</summary>
+            <p>We’re open every day from 8&nbsp;am to 10&nbsp;pm, so early birds and night owls are both welcome.</p>
+          </details>
+          <details class="faq">
+            <summary>#7 Do I need to book?</summary>
+            <p>No booking needed, just walk in. Your first day is free.</p>
+          </details>
+        </section>
+
+        <!-- Images: thumbnails open the photo viewer -->
+        <section class="panel panel--images" id="panel-images" role="tabpanel" aria-labelledby="tab-images" data-panel="images" hidden>
+          <ul class="thumbs">
+            <li class="thumbs__item thumbs__item--space">
+              <button class="thumb" type="button" data-photo="0" aria-label="Open space.jpg" data-alt="The main open-plan room with desks, leather armchairs and plants">
+                <img src="assets/images/gallery/space-thumb.jpg" alt="" width="389" height="400" loading="lazy">
+                <span class="thumb__name">space.jpg</span>
+              </button>
+            </li>
+            <li class="thumbs__item thumbs__item--desk">
+              <button class="thumb" type="button" data-photo="1" aria-label="Open desk.jpg" data-alt="A work area with standing desks, monitors and a big monstera">
+                <img src="assets/images/gallery/desk-thumb.jpg" alt="" width="264" height="400" loading="lazy">
+                <span class="thumb__name">desk.jpg</span>
+              </button>
+            </li>
+            <li class="thumbs__item thumbs__item--wall">
+              <button class="thumb" type="button" data-photo="2" aria-label="Open wall.jpg" data-alt="Two people pinning photos and notes to a wall">
+                <img src="assets/images/gallery/wall-thumb.jpg" alt="" width="300" height="400" loading="lazy">
+                <span class="thumb__name">wall.jpg</span>
+              </button>
+            </li>
+            <li class="thumbs__item thumbs__item--team">
+              <button class="thumb" type="button" data-photo="3" aria-label="Open team.jpg" data-alt="A team working together around long white tables">
+                <img src="assets/images/gallery/team-thumb.jpg" alt="" width="400" height="269" loading="lazy">
+                <span class="thumb__name">team.jpg</span>
+              </button>
+            </li>
+            <li class="thumbs__item thumbs__item--cafe">
+              <button class="thumb" type="button" data-photo="4" aria-label="Open cafe.jpg" data-alt="The café corner with round tables, bentwood chairs and bookshelves">
+                <img src="assets/images/gallery/cafe-thumb.jpg" alt="" width="300" height="400" loading="lazy">
+                <span class="thumb__name">cafe.jpg</span>
+              </button>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Our story -->
+        <section class="panel panel--story" id="panel-story" role="tabpanel" aria-labelledby="tab-story" data-panel="story" hidden>
+          <h3 class="story__title">Built by remote workers,<br>for remote workers</h3>
+          <p>We moved to Tbilisi in 2022 to work<br> remotely, and quickly ran out<br class="br-mobile"> of places<br class="br-desktop"> to do it. Cafés had slow<br class="br-mobile"> Wi-Fi and one<br class="br-desktop"> socket for the whole<br class="br-mobile"> room. Home was too<br class="br-desktop"> quiet, then<br class="br-mobile"> too loud. Other coworkings felt<br class="br-desktop"> like<br class="br-mobile"> offices nobody wanted to be in.</p>
+          <p>So we opened KERA: a calm,<br class="br-mobile"> reliable space<br class="br-desktop"> with everything<br class="br-mobile"> you need to get through<br class="br-desktop"> a full day<br class="br-mobile"> of work. Fast internet, a socket<br> at every desk, quiet corners<br class="br-mobile"> for calls<br class="br-desktop"> and a kitchen for breaks.</p>
+        </section>
+
+      </div>
+
+      <!-- Photo viewer (inside the window) -->
+      <div class="viewer" data-viewer hidden>
+        <figure class="file viewer__card" role="dialog" aria-modal="true" aria-label="Photo viewer">
+          <figcaption class="file__bar">
+            <span class="file__name" data-viewer-name>space.jpg</span>
+            <button class="file__icon" type="button" data-viewer-prev aria-label="Previous photo">
+              <svg viewBox="0 0 12 20" aria-hidden="true"><path d="M9 3L3 10l6 7"/></svg>
+            </button>
+            <button class="file__icon" type="button" data-viewer-next aria-label="Next photo">
+              <svg viewBox="0 0 12 20" aria-hidden="true"><path d="M3 3l6 7-6 7"/></svg>
+            </button>
+            <a class="file__icon" href="assets/images/gallery/space.jpg" download data-viewer-download aria-label="Download this photo">
+              <img src="assets/images/icon-share.png" alt="" width="22" height="31">
+            </a>
+            <button class="file__icon" type="button" data-viewer-close aria-label="Close photo">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16"/></svg>
+            </button>
+          </figcaption>
+          <img class="viewer__img" src="" alt="" data-viewer-img>
+        </figure>
+      </div>
+
+      <!-- Phone close button -->
+      <div class="win__probe" data-win-probe aria-hidden="true"></div>
+
+      <button class="win__close-phone" type="button" data-win-close aria-label="Close window">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

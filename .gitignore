@@ -1,0 +1,7 @@
+# Design mockups and source images (not part of the site)
+Design/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
