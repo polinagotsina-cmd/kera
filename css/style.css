@@ -15,7 +15,13 @@
   --color-gray-dark: #3A3A3A;
   --color-gray: #4A4A4A;
   --color-select: #2D6BEA;    /* Finder-style selection blue (folder label) */
+  --color-accent: #2AB1F8;    /* "1/" "2/" numerals, text selection handles */
+  --color-highlight: #C0E7E6; /* selected-text background */
   --color-white: #FFFFFF;
+
+  /* Pixel cursors (32×32 PNG, hotspot at the arrow tip / fingertip) */
+  --cursor-default: url('../assets/images/cursor-arrow.png') 1 1, auto;
+  --cursor-pointer: url('../assets/images/cursor-hand.png') 9 1, pointer;
 
   /* Font */
   --font-main: 'Switzer', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -118,6 +124,17 @@
 
 html {
   scroll-behavior: smooth;
+  cursor: var(--cursor-default);
+}
+
+/* Everything clickable gets the pixel hand */
+a,
+button,
+summary,
+label,
+[role="button"],
+[role="tab"] {
+  cursor: var(--cursor-pointer);
 }
 
 body {
@@ -249,7 +266,7 @@ a {
     margin-top: 2px;
     border: 0;
     background: none;
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
   }
 
   .nav__toggle span {
@@ -306,7 +323,7 @@ a {
   font-weight: var(--fw-regular);
   line-height: 1;
   white-space: nowrap;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   transition: background-color var(--transition), color var(--transition), opacity var(--transition);
 }
 
@@ -397,7 +414,7 @@ a {
 /* Phone hero */
 @media (max-width: 767.98px) {
   .hero {
-    padding: var(--hero-offset) 16px 60px;
+    padding: var(--hero-offset) 16px 90px;  /* 60px + the height the text link saves vs. a button */
   }
 
   .hero::before {
@@ -422,6 +439,23 @@ a {
   .hero__buttons .btn--filled {
     order: -1;
   }
+
+  /* the secondary button becomes an underlined text link */
+  .hero__buttons .btn--outline {
+    height: auto;
+    margin-top: 4px;
+    padding: 0;
+    border-color: transparent;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 5px;
+  }
+
+  .hero__buttons .btn--outline:hover {
+    background-color: transparent;
+    color: var(--color-cream);
+    opacity: 0.75;
+  }
 }
 
 /* ---------- What's included (about) ---------- */
@@ -431,9 +465,9 @@ a {
   flex-direction: column;
   justify-content: center;
   /* fills the screen, but never taller than the mockup's proportions */
-  min-height: min(100vh, calc(714 * var(--u)));
-  min-height: min(100svh, calc(714 * var(--u)));
-  padding: calc(50 * var(--u)) 20px calc(100 * var(--u));
+  min-height: min(100vh, calc(625 * var(--u)));
+  min-height: min(100svh, calc(625 * var(--u)));
+  padding: calc(50 * var(--u)) 20px calc(78 * var(--u));
   background-color: var(--color-cream);
   color: var(--color-dark);
 }
@@ -448,6 +482,18 @@ a {
   height: calc(44 * var(--u));
   font-size: var(--fs-p2);
   line-height: 1;
+  user-select: none;
+}
+
+/* "Work · Get Started" focus pill in the middle of the menu bar */
+.menubar-pill {
+  position: absolute;
+  top: calc(8 * var(--u));
+  left: 50%;
+  width: calc(143 * var(--u));
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
   user-select: none;
 }
 
@@ -490,13 +536,15 @@ a {
   display: none;
 }
 
-/* Three columns: text / folder / text */
+/* Three columns: "1/" text / folder / "2/" text.
+   Both text columns start on the same line; the folder is centred on the text block. */
 .about__grid {
   display: grid;
-  grid-template-columns: 1fr calc(136 * var(--u)) 1fr;
-  column-gap: calc(104 * var(--u));
+  grid-template-columns: calc(340 * var(--u)) calc(136 * var(--u)) calc(300 * var(--u));
+  justify-content: center;
+  column-gap: calc(92 * var(--u));
   align-items: start;
-  margin-top: calc(105 * var(--u));
+  margin-top: calc(65 * var(--u));
 }
 
 .about__grid p {
@@ -504,30 +552,74 @@ a {
   line-height: var(--lh-p1);
 }
 
-.about__point + .about__point {
-  margin-top: calc(21 * var(--u));
-}
-
-.about__point--indent {
-  margin-right: calc(-40 * var(--u));  /* in the mockup this text runs past the column edge */
-  padding-left: calc(57 * var(--u));
-}
-
-.about__col--right .about__point {
-  max-width: calc(300 * var(--u));
+.about__col p + p {
+  margin-top: calc(20 * var(--u));
 }
 
 .about__num {
   font-weight: var(--fw-medium);
-}
-
-.about__num + p {
-  margin-top: calc(10 * var(--u));
+  color: var(--color-accent);
 }
 
 .about__strong {
   margin-top: calc(17 * var(--u));
   font-weight: var(--fw-medium);
+}
+
+.about__col .about__strong {
+  margin-top: calc(28 * var(--u));
+  font-weight: var(--fw-regular);
+  white-space: nowrap;  /* the lines are set with <br>, like the mockup */
+}
+
+/* macOS-style selected text: highlight + a blue handle at each end.
+   Line height = Switzer's text box (1.25em), so each highlight fragment is exactly
+   one line tall and the lines meet without overlapping. */
+.about__grid .about__strong {
+  line-height: 1.25;
+}
+
+.selection {
+  --sel-h: 1.25em;                      /* one highlighted line */
+  --sel-dot: calc(8 * var(--u));
+  --sel-line: max(1px, calc(2 * var(--u)));
+
+  position: relative;
+  background-color: var(--color-highlight);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Text sits above every highlight fragment, so descenders are never covered */
+.selection__text {
+  position: relative;
+  z-index: 1;
+}
+
+/* Handle = a line the height of one line + a dot at its outer end */
+.selection::before,
+.selection::after {
+  content: '';
+  position: absolute;
+  width: var(--sel-dot);
+  height: calc(var(--sel-h) + var(--sel-dot));
+  background:
+    radial-gradient(circle closest-side, var(--color-accent) 92%, transparent) 0 0 / var(--sel-dot) var(--sel-dot) no-repeat,
+    linear-gradient(var(--color-accent), var(--color-accent)) 50% 100% / var(--sel-line) var(--sel-h) no-repeat;
+  pointer-events: none;
+}
+
+/* Start: along the left edge of the first line, dot above */
+.selection::before {
+  top: calc(-1 * var(--sel-dot));
+  left: calc(var(--sel-dot) / -2);
+}
+
+/* End: along the right edge of the last line, dot below */
+.selection::after {
+  right: calc(var(--sel-dot) / -2);
+  bottom: calc(-1 * var(--sel-dot));
+  background-position: 0 100%, 50% 0;
 }
 
 /* Desktop / phone copy swap — this section switches at 1024px */
@@ -538,8 +630,9 @@ a {
 /* Folder */
 .about__folder-wrap {
   position: relative;
+  align-self: center;
   width: calc(136 * var(--u));
-  margin-top: calc(-6 * var(--u));
+  margin-left: calc(-12 * var(--u));  /* the mockup has it slightly left of the column centre */
 }
 
 .folder {
@@ -554,7 +647,7 @@ a {
   font-size: var(--fs-p2);
   color: inherit;
   text-align: center;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -635,16 +728,6 @@ a {
   transform: translateY(-1px) scale(0.98);
 }
 
-/* Static pixel cursor (decoration) */
-.about__cursor {
-  position: absolute;
-  top: calc(196 * var(--u));
-  left: calc(100% + calc(75 * var(--u)));
-  width: calc(40 * var(--u));
-  height: auto;
-  pointer-events: none;
-}
-
 /* Phone + tablet layout for this section (below 1024px) */
 @media (max-width: 1023.98px) {
   .about {
@@ -684,12 +767,7 @@ a {
   }
 
   .about__folder-wrap {
-    margin-top: 63px;
-  }
-
-  .about__cursor {
-    top: 83px;
-    left: calc(100% + 11px);
+    margin: 63px 0 0;
   }
 
   .about__outro {
@@ -704,6 +782,11 @@ a {
 @media (max-width: 767.98px) {
   .menubar {
     right: 13px;
+  }
+
+  /* no room next to the date on a phone */
+  .menubar-pill {
+    display: none;
   }
 }
 
@@ -813,7 +896,7 @@ html.is-locked body {
 }
 
 .win.is-max .win__bar {
-  cursor: default;
+  cursor: var(--cursor-default);
 }
 
 .win__dots {
@@ -830,7 +913,7 @@ html.is-locked body {
   padding: 0;
   border: 0;
   border-radius: 50%;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
 }
 
 .win__dot--close { background-color: #FC5E53; }
@@ -861,7 +944,7 @@ html.is-locked body {
 .win__current {
   font-size: var(--fs-p2);
   line-height: 1;
-  cursor: default;
+  cursor: var(--cursor-default);
 }
 
 /* Sidebar */
@@ -897,7 +980,7 @@ html.is-locked body {
   text-decoration: underline transparent;
   text-decoration-thickness: 1px;
   text-underline-offset: calc(5 * var(--wu));
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   transition: text-decoration-color var(--transition);
 }
 
@@ -972,7 +1055,7 @@ html.is-locked body {
   border: 0;
   background: none;
   color: inherit;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   transition: opacity var(--transition);
 }
 
@@ -1029,14 +1112,14 @@ html.is-locked body {
   --map-x: calc(-32.5 * var(--wu));
 
   position: relative;
-  height: var(--map-h);
+  height: calc(var(--map-h) + var(--map-y, 0px));
   overflow: hidden;
   border-radius: calc(4 * var(--wu));
 }
 
 .map__canvas {
   position: absolute;
-  top: 0;
+  top: var(--map-y, 0px);
   left: var(--map-x);
   width: var(--map-w);
   height: var(--map-h);
@@ -1143,7 +1226,7 @@ html.is-locked body {
   line-height: 1;
   letter-spacing: var(--ls-default);
   list-style: none;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   transition: opacity var(--transition);
 }
 
@@ -1187,7 +1270,7 @@ html.is-locked body {
   background: none;
   color: inherit;
   font: inherit;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
 }
 
 .thumb img {
@@ -1316,7 +1399,7 @@ html.is-locked body {
   .win__bar {
     justify-content: flex-end;
     padding: 27px 20px 0 0;
-    cursor: default;
+    cursor: var(--cursor-default);
     pointer-events: none;
   }
 
@@ -1377,11 +1460,16 @@ html.is-locked body {
     margin: 2.5px -13px 0;
   }
 
+  /* crop and pins matched to the phone mockup */
   .map {
-    --map-w: 619.7px;
-    --map-h: 325px;
-    --map-x: -65px;
+    --map-w: 628px;
+    --map-h: 329.3px;
+    --map-x: -63px;
+    --map-y: -4.3px;
   }
+
+  .map__marker--kera  { left: 36%;   top: 47.3%; }
+  .map__marker--metro { left: 14.6%; top: 65.6%; }
 
   .address {
     margin-top: 33.5px;
@@ -1477,7 +1565,7 @@ html.is-locked body {
     background-color: var(--color-cream);
     color: var(--color-dark);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
   }
 
   .win__close-phone svg {
@@ -1663,9 +1751,9 @@ html.is-locked body {
 /* Phone + tablet layout (below 1024px) */
 @media (max-width: 1023.98px) {
   .prices {
-    min-height: min(100vh, 943px);
-    min-height: min(100svh, 943px);
-    padding: 118.5px 18px 110.5px;
+    min-height: min(100vh, 920px);
+    min-height: min(100svh, 920px);
+    padding: 118.5px 18px 69.5px;
   }
 
   .prices__inner {
@@ -1738,7 +1826,27 @@ html.is-locked body {
     flex-direction: column;
     align-items: center;
     gap: 8.5px;
-    margin-top: 40.5px;
+    margin-top: 82.5px;
+  }
+
+  .prices__buttons .btn--filled {
+    order: -1;
+  }
+
+  .prices__buttons .btn--outline {
+    height: auto;
+    margin-top: 4px;
+    padding: 0;
+    border-color: transparent;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 5px;
+  }
+
+  .prices__buttons .btn--outline:hover {
+    background-color: transparent;
+    color: var(--color-cream);
+    opacity: 0.75;
   }
 }
 
