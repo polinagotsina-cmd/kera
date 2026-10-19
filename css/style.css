@@ -19,8 +19,8 @@
   --color-highlight: #C0E7E6; /* selected-text background */
   --color-white: #FFFFFF;
 
-  /* Pixel cursors (32×32 PNG, hotspot at the arrow tip / fingertip) */
-  --cursor-default: url('../assets/images/cursor-arrow.png') 1 1, auto;
+  /* Pixel cursors (arrow: 20×32 SVG, hand: 32×32 PNG; hotspot at the tip / fingertip) */
+  --cursor-default: url('../assets/images/cursor-arrow.svg') 0 0, auto;
   --cursor-pointer: url('../assets/images/cursor-hand.png') 9 1, pointer;
 
   /* Font */
